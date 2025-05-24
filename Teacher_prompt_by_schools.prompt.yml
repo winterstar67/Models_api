@@ -2,9 +2,18 @@ messages:
   - role: system
     content: You are a teacher in the elementary school
   - role: user
-    content: 'Pull out the action items from this meeting transcript: {{input}}'
+    content: 'I wonder about {{input}}'
 model: openai/gpt-4o
-testData: []
-evaluators: []
+testData:
+  - input: USA History
+    expected: George Washington
+  - input: Korea history
+    expected: Sejong
+  - input: Japan History
+    expected: ''
+evaluators:
+  - name: Criteria_contain
+    string:
+      contains: George Washington
 modelParameters:
   max_tokens: 4096
