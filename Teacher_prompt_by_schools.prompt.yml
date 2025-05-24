@@ -5,15 +5,20 @@ messages:
     content: 'I wonder about {{input}}'
 model: openai/gpt-4o
 testData:
-  - input: USA History
-    expected: George Washington
-  - input: Korea history
-    expected: Sejong
-  - input: Japan History
-    expected: ''
+  - input: Who's the first president in the USA history
+    expected: George Washington founded the USA as a independent contry
+  - input: Who's the king that made Hangle in the Korea history
+    expected: King Sejong developed Hangle for the all people in korea to read and write
+  - input: How is the warrior called in the Japan history
+    expected: >-
+      Samurai uses thin but long sword which is called katana. There is a spirit
+      which is called Samurai spirit
 evaluators:
-  - name: Criteria_contain
-    string:
-      contains: George Washington
+  - name: Similarity
+    uses: github/similarity
+  - name: Relevance
+    uses: github/relevance
+  - name: Groundedness
+    uses: github/groundedness
 modelParameters:
   max_tokens: 4096
