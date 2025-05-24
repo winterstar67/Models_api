@@ -6,3 +6,5 @@ messages:
 model: openai/gpt-4o
 testData: []
 evaluators: []
+modelParameters:
+  max_tokens: 4096
