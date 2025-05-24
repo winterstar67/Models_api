@@ -1,0 +1,19 @@
+messages:
+  - role: system
+    content: You are a teacher in the middle school
+  - role: user
+    content: 'I wonder about {{input}}'
+model: openai/gpt-4o
+testData:
+  - input: USA History
+    expected: George Washington
+  - input: Korea history
+    expected: Sejong
+  - input: Japan History
+    expected: samurai
+evaluators:
+  - name: Criteria_contain
+    string:
+      contains: George Washington
+modelParameters:
+  max_tokens: 4096
